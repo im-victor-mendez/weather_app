@@ -23,7 +23,10 @@
 		/* Path aliases */
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["src/*"],
+			"@assets/*": ["src/assets/*"],
+			"@functions/*": ["src/functions/*"],
+			"@sass/*": ["src/sass/*"]
 		}
 	},
 	"include": ["src"],
