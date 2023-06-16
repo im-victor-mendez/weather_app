@@ -1,5 +1,38 @@
 import { apiOptions, apiUrl } from '.'
 
+type CurrentWeather = {
+	lat: string
+	lon: string
+	elevation: number
+	timezone: string
+	units: string
+	current: {
+		icon: string
+		icon_num: number
+		summary: string
+		temperature: number
+		feels_like: number
+		wind_chill: number
+		dew_point: number
+		wind: {
+			speed: number
+			gusts: number
+			angle: number
+			dir: string
+		}
+		precipitation: {
+			total: number
+			type: string
+		}
+		cloud_cover: number
+		ozone: number
+		pressure: number
+		uv_index: number
+		humidity: number
+		visibility: number
+	}
+}
+
 interface Props {
 	lat: number
 	lon: number
@@ -47,16 +80,18 @@ interface Props {
 export async function currentWeather({
 	lat,
 	lon,
-}: Props): Promise<JSON | unknown> {
+}: Props): Promise<CurrentWeather> {
 	const url = `${apiUrl}current?lat=${lat}&lon=${lon}`
 
 	try {
 		const response = await fetch(url, apiOptions)
 		const data = await response.json()
-		return data
+		return data as CurrentWeather
 	} catch (error) {
 		console.error(error)
 	}
+
+	return {} as CurrentWeather
 }
 
 /**
