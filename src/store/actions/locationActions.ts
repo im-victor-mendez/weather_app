@@ -8,11 +8,8 @@ import reverseGeocoding from '@/api/reverseGeocoding'
  * Set current weather
  * @description Sets current weather information into state
  * @param coords Latitude and Longitude
- * @returns {(dispatch: ThunkDispatch<RootState, void, Action>) => Promise<void>}
  */
-export function setCurrentWeather(
-	coords: Coords
-): (dispatch: ThunkDispatch<RootState, void, Action>) => Promise<void> {
+export function setCurrentWeather(coords: Coords) {
 	return async (dispatch: ThunkDispatch<RootState, void, Action>) => {
 		try {
 			const response = await currentWeather({
@@ -24,22 +21,47 @@ export function setCurrentWeather(
 				const lat = response.lat
 				const lon = response.lon
 
-				dispatch({
-					payload: {
-						lat,
-						lon,
-					},
-					type: SET_COORDS,
-				})
+				setCoords(coords)
 
 				const reverseResponse = await reverseGeocoding({ lat, lon })
 
 				if (reverseResponse) {
-					dispatch({ payload: reverseResponse.city, type: SET_LOCATION })
+					dispatch(setLocation(reverseResponse.city))
 				}
 			}
 		} catch (error) {
 			console.log(error)
 		}
+	}
+}
+
+/**
+ * Set coords
+ * @description Dispatches Set Coords
+ * @param coords Latitude and Longitude
+ * @example setCoords({ lat: 12, lon: 12 })
+ */
+export function setCoords(coords: Coords) {
+	return async (dispatch: ThunkDispatch<RootState, void, Action>) => {
+		const payload = {
+			lat: coords.lat,
+			lon: coords.lon,
+		}
+		dispatch({
+			payload,
+			type: SET_COORDS,
+		})
+	}
+}
+
+/**
+ * Set location
+ * @description Dispatches Set Location
+ * @param location Location name
+ * @example setLocation('Mexico City')
+ */
+export function setLocation(location: string) {
+	return async (dispatch: ThunkDispatch<RootState, void, Action>) => {
+		dispatch({ payload: location, type: SET_LOCATION })
 	}
 }
