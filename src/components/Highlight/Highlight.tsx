@@ -59,6 +59,7 @@ function Highlight({ type, data }: Props): React.JSX.Element {
 		[Types.WIND]: <Wind data={data} />,
 		[Types.HUMIDITY]: <Humidity data={data} />,
 		[Types.VISIBILITY]: <Visibility data={data} />,
+		[Types.AIR_PRESSURE]: <AirPressure data={data} />,
 	}
 
 	return <section className="highlight">{contentMap[type]}</section>
@@ -145,6 +146,24 @@ function Visibility({ data }: TypeProps): React.JSX.Element {
 			<h1 className="title">Visibility</h1>
 			<article className="value">
 				<span className="big">{visibility}</span> miles
+			</article>
+		</>
+	)
+}
+
+/**
+ * Air pressure
+ * @description Content to display air pressure data
+ * @param data Current data
+ * @returns {React.JSX.Element}
+ */
+function AirPressure({ data }: TypeProps): React.JSX.Element {
+	const airPressure = data.current.pressure
+	return (
+		<>
+			<h1 className="title">Air Pressure</h1>
+			<article className="value">
+				<span className="big">{airPressure}</span> mb
 			</article>
 		</>
 	)
