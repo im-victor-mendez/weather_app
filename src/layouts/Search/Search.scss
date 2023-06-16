@@ -1,0 +1,64 @@
+@import '@sass/colors';
+@import '@sass/sizes';
+@import '@sass/fonts';
+
+$padding: 17.41px;
+
+#search {
+	background-color: $dark-blue;
+	color: $white;
+	font-family: $font-family;
+	padding: $padding 0px;
+
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 12px;
+		$padding: 12px;
+
+		padding: $padding;
+
+		.search {
+			$padding: 15px;
+
+			display: flex;
+			align-items: center;
+			padding: $padding;
+			border: 1px solid $white;
+
+			.icon {
+				$size: 17.05px;
+
+				width: $size;
+				height: $size;
+				margin-right: 16.95px;
+
+				path {
+					fill: $purple-dark-gray;
+				}
+			}
+
+			input {
+				color: $white;
+				font-weight: 500;
+				width: $fill;
+				height: 19px;
+
+				&:focus,
+				&:focus-visible {
+					outline: none;
+				}
+			}
+		}
+
+		button {
+			background-color: $blue;
+			color: $white;
+			width: 86px;
+			height: 48px;
+			padding: 0;
+			border: 0;
+		}
+	}
+}
