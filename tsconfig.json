@@ -28,7 +28,8 @@
 			"@functions/*": ["src/functions/*"],
 			"@sass/*": ["src/sass/*"],
 			"@layouts/*": ["src/layouts/*"],
-			"@typescript/*": ["src/typescript/*"]
+			"@typescript/*": ["src/typescript/*"],
+			"@store/*": ["src/store/*"]
 		}
 	},
 	"include": ["src", "svgr.d.ts"],

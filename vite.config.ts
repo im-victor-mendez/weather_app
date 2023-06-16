@@ -16,6 +16,7 @@ export default defineConfig({
 			'@sass': resolve(__dirname, 'src/sass'),
 			'@layouts': resolve(__dirname, 'src/layouts'),
 			'@typescript': resolve(__dirname, 'src/typescript'),
+			'@store': resolve(__dirname, 'src/store'),
 		},
 	},
 })
