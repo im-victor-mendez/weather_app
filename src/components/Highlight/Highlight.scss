@@ -4,7 +4,6 @@
 
 $top-padding: 22px;
 $bottom-padding: 30.26px;
-$height: calc(204px - $top-padding - $bottom-padding);
 $padding: $top-padding 0px $bottom-padding;
 
 .highlight {
@@ -16,7 +15,6 @@ $padding: $top-padding 0px $bottom-padding;
 	align-items: center;
 	font-family: $font-family;
 	width: $fill;
-	height: $height;
 	padding: $padding;
 
 	* {

@@ -58,6 +58,7 @@ function Highlight({ type, data }: Props): React.JSX.Element {
 	const contentMap: { [key in Types]: React.ReactNode } = {
 		[Types.WIND]: <Wind data={data} />,
 		[Types.HUMIDITY]: <Humidity data={data} />,
+		[Types.VISIBILITY]: <Visibility data={data} />,
 	}
 
 	return <section className="highlight">{contentMap[type]}</section>
@@ -129,4 +130,24 @@ function Humidity({ data }: TypeProps): React.JSX.Element {
 		</>
 	)
 }
+
+/**
+ * Visibility
+ * @description Content to display visibility data
+ * @param data Current data
+ * @returns {React.JSX.Element}
+ */
+function Visibility({ data }: TypeProps): React.JSX.Element {
+	const visibility = data.current.visibility
+
+	return (
+		<>
+			<h1 className="title">Visibility</h1>
+			<article className="value">
+				<span className="big">{visibility}</span> miles
+			</article>
+		</>
+	)
+}
+
 export default Highlight
