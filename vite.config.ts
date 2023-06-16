@@ -14,6 +14,8 @@ export default defineConfig({
 			'@assets': resolve(__dirname, 'src/assets'),
 			'@functions': resolve(__dirname, 'src/functions'),
 			'@sass': resolve(__dirname, 'src/sass'),
+			'@layouts': resolve(__dirname, 'src/layouts'),
+			'@typescript': resolve(__dirname, 'src/typescript'),
 		},
 	},
 })

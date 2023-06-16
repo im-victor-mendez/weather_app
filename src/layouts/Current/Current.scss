@@ -1,0 +1,98 @@
+@import '@sass/colors';
+@import '@sass/fonts';
+@import '@sass/sizes';
+
+$min-height: 810px;
+
+$icon-height: 326px;
+$image-width: 150px;
+
+#current {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: $dark-blue;
+	color: $white;
+	font-family: $font-family;
+	width: $fill;
+	min-height: $min-height;
+
+	* {
+		margin: 0;
+	}
+
+	// Add opacity to background
+	.icon {
+		background-image: url(./src/assets/images/Cloud-background.png);
+		background-size: auto $icon-height;
+		background-position: center;
+		background-repeat: no-repeat;
+		display: grid;
+		place-items: center;
+		width: $fill;
+		height: $icon-height;
+
+		img {
+			width: $image-width;
+		}
+	}
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 48px;
+	}
+}
+
+#current > .info {
+	.temperature {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 23px;
+
+		.value {
+			.big {
+				font-weight: 500;
+				font-size: 144px;
+			}
+		}
+
+		.string {
+			color: $gray;
+			font-weight: 600;
+			font-size: 36px;
+		}
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 33px;
+	}
+
+	.description {
+		color: $purple-gray;
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+		font-weight: 500;
+		font-size: 18px;
+		width: fit-content;
+	}
+
+	.location {
+		display: flex;
+		gap: 9px;
+		color: $purple-gray;
+
+		.icon {
+			background: none;
+			fill: $purple-gray;
+			width: 14px;
+			height: auto;
+		}
+	}
+}

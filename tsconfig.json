@@ -26,7 +26,9 @@
 			"@/*": ["src/*"],
 			"@assets/*": ["src/assets/*"],
 			"@functions/*": ["src/functions/*"],
-			"@sass/*": ["src/sass/*"]
+			"@sass/*": ["src/sass/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@typescript/*": ["src/typescript/*"]
 		}
 	},
 	"include": ["src", "svgr.d.ts"],
