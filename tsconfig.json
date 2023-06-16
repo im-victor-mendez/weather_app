@@ -29,6 +29,6 @@
 			"@sass/*": ["src/sass/*"]
 		}
 	},
-	"include": ["src"],
+	"include": ["src", "svgr.d.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
