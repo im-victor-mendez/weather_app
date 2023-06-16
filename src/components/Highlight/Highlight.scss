@@ -70,3 +70,46 @@ $icon-height: 8.63px;
 		}
 	}
 }
+
+$bar-height: 8px;
+
+.humidity {
+	display: flex;
+	flex-direction: column;
+	width: $fill;
+	margin: 0px 50px;
+
+	.percentages {
+		color: $gray;
+		display: flex;
+		justify-content: space-between;
+		padding: 0px 7px;
+	}
+
+	.bar {
+		height: $bar-height;
+
+		* {
+			height: $bar-height;
+			border-radius: 80px;
+		}
+
+		.value {
+			background-color: $yellow;
+			position: relative;
+			z-index: 9;
+		}
+
+		.background {
+			background-color: $white;
+			position: relative;
+			width: $fill;
+			bottom: $bar-height;
+		}
+	}
+
+	.percentage-icon {
+		display: flex;
+		justify-content: flex-end;
+	}
+}

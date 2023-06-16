@@ -57,6 +57,7 @@ interface Props {
 function Highlight({ type, data }: Props): React.JSX.Element {
 	const contentMap: { [key in Types]: React.ReactNode } = {
 		[Types.WIND]: <Wind data={data} />,
+		[Types.HUMIDITY]: <Humidity data={data} />,
 	}
 
 	return <section className="highlight">{contentMap[type]}</section>
@@ -69,7 +70,7 @@ interface TypeProps {
 /**
  * Wind
  * @description Content to display wind data
- * @param data Wind current data
+ * @param data Current data
  * @returns {React.JSX.Element}
  */
 function Wind({ data }: TypeProps): React.JSX.Element {
@@ -92,6 +93,39 @@ function Wind({ data }: TypeProps): React.JSX.Element {
 				</div>
 				<p className="string">{wind.dir}</p>
 			</div>
+		</>
+	)
+}
+
+/**
+ * Humidity
+ * @description Content to display humidity data
+ * @param data Current data
+ * @returns {React.JSX.Element}
+ */
+function Humidity({ data }: TypeProps): React.JSX.Element {
+	const humidity = data.current.humidity
+
+	return (
+		<>
+			<section className="top">
+				<h1 className="title">Humidity</h1>
+				<article className="value">
+					<span className="big">{humidity}</span>%
+				</article>
+			</section>
+			<section className="humidity">
+				<div className="percentages">
+					<p>0</p>
+					<p>50</p>
+					<p>100</p>
+				</div>
+				<div className="bar">
+					<div className="value" style={{ width: `${humidity}%` }}></div>
+					<div className="background"></div>
+				</div>
+				<div className="percentage-icon">%</div>
+			</section>
 		</>
 	)
 }
