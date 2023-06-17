@@ -1,6 +1,6 @@
 /* Location */
 
-// Types
+// Sets
 export const SET_LAT = 'SET_LAT'
 export const SET_LON = 'SET_LON'
 export const SET_COORDS = 'SET_COORDS'
@@ -35,11 +35,13 @@ export type LocationAction = SetCoords | SetLocation
 
 /* Forecast */
 
-// Types
+// Sets
 export const SET_FORECAST = 'SET_FORECAST'
+export const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER'
 
 // State
 export interface ForecastState {
+	currentWeather: CurrentWeather
 	forecasts: Array<Forecast>
 }
 
@@ -84,10 +86,41 @@ export type Forecast = {
 	visibility: number
 }
 
+export type CurrentWeather = {
+	icon: string
+	icon_num: number
+	summary: string
+	temperature: number
+	feels_like: number
+	wind_chill: number
+	dew_point: number
+	wind: {
+		speed: number
+		gusts: number
+		angle: number
+		dir: string
+	}
+	precipitation: {
+		total: number
+		type: string
+	}
+	cloud_cover: number
+	ozone: number
+	pressure: number
+	uv_index: number
+	humidity: number
+	visibility: number
+}
+
 //Actions
 export interface SetForecast {
 	payload: Array<Forecast>
 	type: typeof SET_FORECAST
 }
 
-export type ForecastAction = SetForecast
+export interface SetCurrentWeather {
+	payload: CurrentWeather
+	type: typeof SET_CURRENT_WEATHER
+}
+
+export type ForecastAction = SetForecast | SetCurrentWeather

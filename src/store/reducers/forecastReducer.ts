@@ -1,6 +1,13 @@
-import { ForecastAction, ForecastState, SET_FORECAST } from '../types'
+import {
+	CurrentWeather,
+	ForecastAction,
+	ForecastState,
+	SET_CURRENT_WEATHER,
+	SET_FORECAST,
+} from '../types'
 
 const initialState: ForecastState = {
+	currentWeather: {} as CurrentWeather,
 	forecasts: [],
 }
 
@@ -10,6 +17,12 @@ function forecastReducer(state = initialState, action: ForecastAction) {
 			return {
 				...state,
 				forecasts: action.payload,
+			}
+
+		case SET_CURRENT_WEATHER:
+			return {
+				...state,
+				currentWeather: action.payload,
 			}
 		default:
 			return state
