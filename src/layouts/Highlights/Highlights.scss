@@ -1,5 +1,6 @@
 @import '@sass/colors';
 @import '@sass/fonts';
+@import '@sass/sizes';
 
 #highlights {
 	color: $white;
@@ -7,6 +8,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	width: $fill;
+	padding: 0px 24px;
 
 	.title {
 		font-weight: 700;

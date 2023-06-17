@@ -1,5 +1,5 @@
 import { Action, ThunkDispatch } from '@reduxjs/toolkit'
-import { Coords, SET_COORDS, SET_LOCATION } from '../types'
+import { Coords, SET_COORDS, SET_CURRENT_WEATHER, SET_LOCATION } from '../types'
 import { RootState } from '../store'
 import { currentWeather } from '@/api/forecast'
 import reverseGeocoding from '@/api/reverseGeocoding'
@@ -22,6 +22,7 @@ export function setCurrentWeather(coords: Coords) {
 				const lon = response.lon
 
 				setCoords(coords)
+				dispatch({ payload: response.current, type: SET_CURRENT_WEATHER })
 
 				const reverseResponse = await reverseGeocoding({ lat, lon })
 

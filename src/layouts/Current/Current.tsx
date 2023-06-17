@@ -37,16 +37,21 @@ const IconIndex = Object.values(Icon)
 
 interface Props {
 	data: Current
-	location: string
+	location: string | undefined
 }
 
 function Current({ data, location }: Props) {
-	const imageSrc = IconIndex[data.icon_num - 1].replace('@', './src/')
-	const description = desSlug(data.icon)
+	const dispatch = useAppDispatch()
+
+	if (data == undefined) return null
+
+	const imageSrc =
+		Object.keys(data).length > 0
+			? IconIndex[data.icon_num - 1].replace('@', './src/')
+			: IconIndex[1].replace('@', './src/')
+	const description = desSlug(data.icon || '')
 	const date = new Date().toUTCString()
 	const today = translateDate(date)
-
-	const dispatch = useAppDispatch()
 
 	function getCurrentLocation() {
 		const geolocationAPI = navigator.geolocation
@@ -83,7 +88,7 @@ function Current({ data, location }: Props) {
 					</div>
 					<div className="location">
 						<LocationIcon className="icon location" />
-						<p>{location}</p>
+						<p>{location || 'Search a place or use your location! :D'}</p>
 					</div>
 				</div>
 			</article>

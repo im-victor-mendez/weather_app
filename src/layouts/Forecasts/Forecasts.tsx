@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux'
 
 function Forecasts() {
 	const { forecasts } = useSelector((state: RootState) => state.forecast)
-
-	return (
-		<section id="forecasts">
-			{forecasts.map((forecast) => (
-				<Forecast key={forecast.day} data={forecast} />
-			))}
-		</section>
-	)
+	if (forecasts)
+		return (
+			<section id="forecasts">
+				{forecasts.map((forecast) => (
+					<Forecast key={forecast.day} data={forecast} />
+				))}
+			</section>
+		)
 }
 export default Forecasts

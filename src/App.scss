@@ -1,0 +1,8 @@
+@import '@sass/colors';
+
+#data {
+	background-color: $very-dark-blue;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
