@@ -8,7 +8,22 @@ $padding: 17.41px;
 	background-color: $dark-blue;
 	color: $white;
 	font-family: $font-family;
+	height: calc(100vh - $padding * 2);
 	padding: $padding 0px;
+
+	.close {
+		display: flex;
+		justify-content: flex-end;
+		padding: $padding;
+
+		.icon {
+			$size: 13.18px;
+
+			width: $size;
+			height: $size;
+			stroke: $white;
+		}
+	}
 
 	.top {
 		display: flex;
@@ -26,6 +41,8 @@ $padding: 17.41px;
 			align-items: center;
 			padding: $padding;
 			border: 1px solid $white;
+			width: calc(254px - $padding * 2 - 2px);
+			height: calc(48px - $padding * 2 - 2px);
 
 			.icon {
 				$size: 17.05px;
@@ -40,8 +57,11 @@ $padding: 17.41px;
 			}
 
 			input {
+				background-color: transparent;
 				color: $white;
 				font-weight: 500;
+				border: 0;
+				padding: 0;
 				width: $fill;
 				height: 19px;
 
@@ -59,6 +79,45 @@ $padding: 17.41px;
 			height: 48px;
 			padding: 0;
 			border: 0;
+		}
+	}
+
+	.list {
+		$margin: 38px;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		overflow: auto;
+		margin-top: $margin;
+		height: calc(100% - $padding * 6 - $margin);
+
+		.result {
+			background-color: transparent;
+			color: $white;
+			font-weight: 500;
+			font-size: 16px;
+			border: 1px solid transparent;
+			display: flex;
+			justify-content: space-between;
+			padding: 22px 12px;
+			max-height: 64px;
+
+			&:hover {
+				border: 1px solid $purple-dark-gray;
+
+				.icon {
+					display: block;
+				}
+			}
+
+			.icon {
+				display: none;
+				height: 100%;
+
+				* {
+					fill: $purple-dark-gray;
+				}
+			}
 		}
 	}
 }

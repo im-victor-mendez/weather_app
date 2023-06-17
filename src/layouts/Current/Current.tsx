@@ -6,6 +6,8 @@ import { ReactComponent as LocationIcon } from '@assets/svg/alternate-map-marker
 import { ReactComponent as CurrentLocationIcon } from '@assets/svg/current-location.svg'
 import { useAppDispatch } from '@/store/store'
 import { setCoords } from '@/store/actions/locationActions'
+import { SetStateAction, useState } from 'react'
+import Search from '../Search/Search'
 
 type Current = {
 	icon: string
@@ -41,6 +43,7 @@ interface Props {
 }
 
 function Current({ data, location }: Props) {
+	const [search, setSearch] = useState(false)
 	const dispatch = useAppDispatch()
 
 	if (data == undefined) return null
@@ -53,6 +56,10 @@ function Current({ data, location }: Props) {
 	const date = new Date().toUTCString()
 	const today = translateDate(date)
 
+	function enableSearch() {
+		setSearch(true)
+	}
+
 	function getCurrentLocation() {
 		const geolocationAPI = navigator.geolocation
 
@@ -64,10 +71,14 @@ function Current({ data, location }: Props) {
 		}
 	}
 
+	if (search) return <Search enableLayout={setSearch} />
+
 	return (
 		<section id="current">
 			<div className="top">
-				<button className="search">Search for places</button>
+				<button className="search" onClick={enableSearch}>
+					Search for places
+				</button>
 				<CurrentLocationIcon className="icon" onClick={getCurrentLocation} />
 			</div>
 			<div className="icon">

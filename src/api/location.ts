@@ -1,5 +1,17 @@
 import { apiOptions, apiUrl } from '.'
 
+export type Place = {
+	name: string
+	place_id: string
+	adm_area1: string
+	adm_area2: string
+	country: string
+	lat: string
+	lon: string
+	timezone: string
+	type: string
+}
+
 interface Props {
 	text: string
 }
@@ -22,16 +34,17 @@ interface Props {
     "type": "settlement"
   }]
  */
-export async function findPlace({ text }: Props): Promise<JSON | unknown> {
+export async function findPlace({ text }: Props): Promise<Array<Place>> {
 	const url = `${apiUrl}find_places?text=${text}`
 
 	try {
 		const response = await fetch(url, apiOptions)
 		const data = await response.json()
-		return data
+		return data as Array<Place>
 	} catch (error) {
-		return error
+		console.log(error)
 	}
+	return {} as Array<Place>
 }
 
 /**

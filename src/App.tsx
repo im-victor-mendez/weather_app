@@ -9,10 +9,11 @@ import Highlights from './layouts/Highlights/Highlights'
 import { setCurrentWeather } from './store/actions/locationActions'
 
 function App() {
+	const dispatch = useAppDispatch()
 	const { location, lat, lon } = useSelector(
 		(state: RootState) => state.location
 	)
-	const dispatch = useAppDispatch()
+	const { forecasts } = useSelector((state: RootState) => state.forecast)
 	const { currentWeather } = useSelector((state: RootState) => state.forecast)
 	const geolocationAPI = navigator.geolocation
 
@@ -26,10 +27,12 @@ function App() {
 	return (
 		<>
 			<Current data={currentWeather} location={location} />
-			<article id="data">
-				<Forecasts />
-				<Highlights />
-			</article>
+			{Object.keys(forecasts).length > 0 && currentWeather && (
+				<article id="data">
+					<Forecasts />
+					<Highlights />
+				</article>
+			)}
 		</>
 	)
 }
