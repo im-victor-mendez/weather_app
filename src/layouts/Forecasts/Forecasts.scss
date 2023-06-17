@@ -1,0 +1,10 @@
+$horizontal-gap: 26px;
+$vertical-gap: 32px;
+
+#forecasts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: $vertical-gap $horizontal-gap;
+	padding: 52px 0px;
+	width: calc(120px * 2 + $horizontal-gap);
+}
