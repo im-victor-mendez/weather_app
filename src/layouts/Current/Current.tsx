@@ -3,6 +3,9 @@ import './Current.scss'
 import { Icon } from '@typescript/enums'
 import { translateDate } from '@/functions/date'
 import { ReactComponent as LocationIcon } from '@assets/svg/alternate-map-marker.svg'
+import { ReactComponent as CurrentLocationIcon } from '@assets/svg/current-location.svg'
+import { useAppDispatch } from '@/store/store'
+import { setCoords } from '@/store/actions/locationActions'
 
 type Current = {
 	icon: string
@@ -43,8 +46,25 @@ function Current({ data, location }: Props) {
 	const date = new Date().toUTCString()
 	const today = translateDate(date)
 
+	const dispatch = useAppDispatch()
+
+	function getCurrentLocation() {
+		const geolocationAPI = navigator.geolocation
+
+		geolocationAPI.getCurrentPosition(success)
+
+		function success(location: GeolocationPosition) {
+			const { latitude, longitude } = location.coords
+			dispatch(setCoords({ lat: latitude, lon: longitude }))
+		}
+	}
+
 	return (
 		<section id="current">
+			<div className="top">
+				<button className="search">Search for places</button>
+				<CurrentLocationIcon className="icon" onClick={getCurrentLocation} />
+			</div>
 			<div className="icon">
 				<img src={imageSrc} alt={`${data.icon} icon`} />
 			</div>
