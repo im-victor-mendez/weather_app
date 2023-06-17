@@ -1,0 +1,19 @@
+import './Highlights.scss'
+import Highlight, { Types } from '@/components/Highlight/Highlight'
+import { RootState } from '@/store/store'
+import { useSelector } from 'react-redux'
+
+function Highlights() {
+	const { currentWeather } = useSelector((state: RootState) => state.forecast)
+
+	return (
+		<section id="highlights">
+			<h1 className="title">Today's Highlights</h1>
+			<Highlight type={Types.WIND} data={currentWeather} />
+			<Highlight type={Types.HUMIDITY} data={currentWeather} />
+			<Highlight type={Types.VISIBILITY} data={currentWeather} />
+			<Highlight type={Types.AIR_PRESSURE} data={currentWeather} />
+		</section>
+	)
+}
+export default Highlights

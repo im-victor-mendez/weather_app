@@ -9,36 +9,29 @@ export enum Types {
 }
 
 type CurrentType = {
-	lat: string
-	lon: string
-	elevation: number
-	timezone: string
-	units: string
-	current: {
-		icon: string
-		icon_num: number
-		summary: string
-		temperature: number
-		feels_like: number
-		wind_chill: number
-		dew_point: number
-		wind: {
-			speed: number
-			gusts: number
-			angle: number
-			dir: string
-		}
-		precipitation: {
-			total: number
-			type: string
-		}
-		cloud_cover: number
-		ozone: number
-		pressure: number
-		uv_index: number
-		humidity: number
-		visibility: number
+	icon: string
+	icon_num: number
+	summary: string
+	temperature: number
+	feels_like: number
+	wind_chill: number
+	dew_point: number
+	wind: {
+		speed: number
+		gusts: number
+		angle: number
+		dir: string
 	}
+	precipitation: {
+		total: number
+		type: string
+	}
+	cloud_cover: number
+	ozone: number
+	pressure: number
+	uv_index: number
+	humidity: number
+	visibility: number
 }
 
 interface Props {
@@ -76,7 +69,7 @@ interface TypeProps {
  * @returns {React.JSX.Element}
  */
 function Wind({ data }: TypeProps): React.JSX.Element {
-	const wind = data.current.wind
+	const wind = data.wind
 
 	return (
 		<>
@@ -106,7 +99,7 @@ function Wind({ data }: TypeProps): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 function Humidity({ data }: TypeProps): React.JSX.Element {
-	const humidity = data.current.humidity
+	const humidity = data.humidity
 
 	return (
 		<>
@@ -139,7 +132,7 @@ function Humidity({ data }: TypeProps): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 function Visibility({ data }: TypeProps): React.JSX.Element {
-	const visibility = data.current.visibility
+	const visibility = data.visibility
 
 	return (
 		<>
@@ -158,7 +151,7 @@ function Visibility({ data }: TypeProps): React.JSX.Element {
  * @returns {React.JSX.Element}
  */
 function AirPressure({ data }: TypeProps): React.JSX.Element {
-	const airPressure = data.current.pressure
+	const airPressure = data.pressure
 	return (
 		<>
 			<h1 className="title">Air Pressure</h1>
