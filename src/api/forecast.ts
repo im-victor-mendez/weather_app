@@ -94,6 +94,56 @@ export async function currentWeather({
 	return {} as CurrentWeather
 }
 
+type DailyData = {
+	day: string
+	weather: string
+	icon: number
+	summary: string
+	predictability: number
+	temperature: number
+	temperature_min: number
+	temperature_max: number
+	feels_like: number
+	feels_like_min: number
+	feels_like_max: number
+	wind_chill: number
+	wind_chill_min: number
+	wind_chill_max: number
+	dew_point: number
+	dew_point_min: number
+	dew_point_max: number
+	wind: {
+		speed: number
+		gusts: number
+		dir: string
+		angle: number
+	}
+	cloud_cover: number
+	pressure: number
+	precipitation: {
+		total: number
+		type: string
+	}
+	probability: {
+		precipitation: number
+		storm: number
+		freeze: number
+	}
+	ozone: number
+	humidity: number
+	visibility: number
+}
+
+type DailyWeather = {
+	lat: string
+	lon: string
+	elevation: number
+	units: string
+	daily: {
+		data: Array<DailyData>
+	}
+}
+
 /**
  * Daily weather
  * @description Daily weather forecast for the next 21 days.
@@ -150,17 +200,16 @@ export async function currentWeather({
   }
 }
  */
-export async function dailyWeather({
-	lat,
-	lon,
-}: Props): Promise<JSON | unknown> {
+export async function dailyWeather({ lat, lon }: Props): Promise<DailyWeather> {
 	const url = `${apiUrl}daily?lat=${lat}&lon=${lon}`
 
 	try {
 		const response = await fetch(url, apiOptions)
 		const data = await response.json()
-		return data
+		return data as DailyWeather
 	} catch (error) {
 		console.error(error)
 	}
+
+	return {} as DailyWeather
 }
