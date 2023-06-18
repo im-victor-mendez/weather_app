@@ -1,5 +1,6 @@
 import {
 	CurrentWeather,
+	Forecast,
 	ForecastAction,
 	ForecastState,
 	SET_CURRENT_WEATHER,
@@ -8,7 +9,7 @@ import {
 
 const initialState: ForecastState = {
 	currentWeather: {} as CurrentWeather,
-	forecasts: [],
+	forecasts: [] as Array<Forecast>,
 }
 
 function forecastReducer(state = initialState, action: ForecastAction) {

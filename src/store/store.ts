@@ -3,14 +3,16 @@ import { useDispatch } from 'react-redux'
 import locationReducer from './reducers/locationReducer'
 import forecastReducer from './reducers/forecastReducer'
 
-const reducer = combineReducers({
+const combineReducersObject = {
 	location: locationReducer,
 	forecast: forecastReducer,
-})
+}
+const reducer = combineReducers(combineReducersObject)
 
-const store = configureStore({
+const configureStoreObject = {
 	reducer,
-})
+}
+const store = configureStore(configureStoreObject)
 
 export type AppDispatch = typeof store.dispatch
 export const useAppDispatch: () => AppDispatch = useDispatch

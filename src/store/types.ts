@@ -4,7 +4,6 @@
 export const SET_LAT = 'SET_LAT'
 export const SET_LON = 'SET_LON'
 export const SET_COORDS = 'SET_COORDS'
-
 export const SET_LOCATION = 'SET_LOCATION'
 
 // State

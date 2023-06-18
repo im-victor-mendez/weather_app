@@ -5,11 +5,7 @@ import {
 	SET_LOCATION,
 } from '../types'
 
-const initialState: LocationState = {
-	lat: undefined,
-	location: undefined,
-	lon: undefined,
-}
+const initialState = {} as LocationState
 
 function locationReducer(state = initialState, action: LocationAction) {
 	switch (action.type) {
