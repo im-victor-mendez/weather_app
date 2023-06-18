@@ -4,6 +4,10 @@ import { ReactComponent as CloseIcon } from '@assets/svg/close-outline.svg'
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-ios-forward.svg'
 import { SetStateAction, useState } from 'react'
 import { Place, findPlace } from '@/api/location'
+import { useAppDispatch } from '@/store/store'
+import { Coords } from '@/store/types'
+import { setCoords, setLocation } from '@/store/actions/locationActions'
+import { setCurrentWeather } from '@/store/actions/forecastActions'
 
 interface Props {
 	enableLayout: React.Dispatch<SetStateAction<boolean>>
@@ -12,6 +16,7 @@ interface Props {
 function Search({ enableLayout }: Props) {
 	const [search, setSearch] = useState('')
 	const [list, setList] = useState<Array<Place>>([])
+	const dispatch = useAppDispatch()
 
 	function closeLayout() {
 		enableLayout(false)
@@ -23,10 +28,28 @@ function Search({ enableLayout }: Props) {
 		setSearch(value)
 	}
 
-	function searchButton() {
+	function searchButton(event: { preventDefault: () => void }) {
+		event.preventDefault()
+
 		findPlace({ text: search }).then((data) => {
 			setList(data)
 		})
+	}
+
+	interface HandleLocationProps {
+		coords: Coords
+		location: string
+	}
+	function handleLocation({ coords, location }: HandleLocationProps) {
+		try {
+			dispatch(setCoords(coords))
+			dispatch(setLocation(location))
+			dispatch(setCurrentWeather(coords))
+		} catch (error) {
+			console.log('Error trying to Handle location: ', error)
+		} finally {
+			closeLayout()
+		}
 	}
 
 	return (
@@ -34,7 +57,7 @@ function Search({ enableLayout }: Props) {
 			<div className="close">
 				<CloseIcon className="icon" onClick={closeLayout} />
 			</div>
-			<div className="top">
+			<form className="top">
 				<div className="search">
 					<SearchIcon className="icon" />
 					<input
@@ -46,15 +69,28 @@ function Search({ enableLayout }: Props) {
 						value={search}
 					/>
 				</div>
-				<button onClick={searchButton}>Search</button>
-			</div>
+				<button type="submit" onClick={searchButton}>
+					Search
+				</button>
+			</form>
 			<article className="list">
-				{list.map((item) => (
-					<button key={item.place_id} className="result">
-						{item.country}, {item.adm_area1}, {item.name}
-						<ArrowIcon className="icon" />
-					</button>
-				))}
+				{list.map((item) => {
+					const lat = parseFloat(item.lat)
+					const lon = parseFloat(item.lon)
+					const coords = { lat, lon }
+					const location = `${item.country}, ${item.adm_area1}, ${item.name}`
+
+					return (
+						<button
+							key={item.place_id}
+							className="result"
+							onClick={() => handleLocation({ coords, location })}
+						>
+							{location}
+							<ArrowIcon className="icon" />
+						</button>
+					)
+				})}
 			</article>
 		</section>
 	)

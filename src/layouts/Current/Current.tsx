@@ -1,13 +1,14 @@
-import { desSlug } from '@functions/string'
-import './Current.scss'
-import { Icon } from '@typescript/enums'
 import { translateDate } from '@/functions/date'
+import { setCoords } from '@/store/actions/locationActions'
+import { RootState, useAppDispatch } from '@/store/store'
 import { ReactComponent as LocationIcon } from '@assets/svg/alternate-map-marker.svg'
 import { ReactComponent as CurrentLocationIcon } from '@assets/svg/current-location.svg'
-import { useAppDispatch } from '@/store/store'
-import { setCoords } from '@/store/actions/locationActions'
-import { SetStateAction, useState } from 'react'
+import { desSlug } from '@functions/string'
+import { Icon } from '@typescript/enums'
+import { useState } from 'react'
 import Search from '../Search/Search'
+import './Current.scss'
+import { useSelector } from 'react-redux'
 
 type Current = {
 	icon: string
@@ -37,22 +38,20 @@ type Current = {
 
 const IconIndex = Object.values(Icon)
 
-interface Props {
-	data: Current
-	location: string | undefined
-}
-
-function Current({ data, location }: Props) {
+function Current() {
 	const [search, setSearch] = useState(false)
 	const dispatch = useAppDispatch()
 
-	if (data == undefined) return null
+	const { currentWeather } = useSelector((state: RootState) => state.forecast)
+	const { location } = useSelector((state: RootState) => state.location)
+
+	if (currentWeather == undefined) return null
 
 	const imageSrc =
-		Object.keys(data).length > 0
-			? IconIndex[data.icon_num - 1].replace('@', './src/')
+		Object.keys(currentWeather).length > 0
+			? IconIndex[currentWeather.icon_num - 1].replace('@', './src/')
 			: IconIndex[1].replace('@', './src/')
-	const description = desSlug(data.icon || '')
+	const description = desSlug(currentWeather.icon || '')
 	const date = new Date().toUTCString()
 	const today = translateDate(date)
 
@@ -82,12 +81,12 @@ function Current({ data, location }: Props) {
 				<CurrentLocationIcon className="icon" onClick={getCurrentLocation} />
 			</div>
 			<div className="icon">
-				<img src={imageSrc} alt={`${data.icon} icon`} />
+				<img src={imageSrc} alt={`${currentWeather.icon} icon`} />
 			</div>
 			<article className="info">
 				<div className="temperature">
 					<h1 className="value">
-						<span className="big">{data.temperature}</span>
+						<span className="big">{currentWeather.temperature}</span>
 					</h1>
 					<h2 className="string">{description}</h2>
 				</div>
