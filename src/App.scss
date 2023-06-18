@@ -1,8 +1,12 @@
 @import '@sass/colors';
 
+$margin: 52px;
+
 #data {
 	background-color: $very-dark-blue;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: $margin;
+	padding: $margin 0px;
 }
