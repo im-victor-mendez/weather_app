@@ -1,0 +1,45 @@
+@import '@sass/colors';
+@import '@sass/sizes';
+
+@mixin medias() {
+	@media (min-width: 1100px) {
+		@include desktop-media();
+	}
+}
+
+@mixin desktop-media() {
+	body {
+		background-color: $very-dark-blue;
+		width: 100vw;
+	}
+
+	#root {
+		display: flex;
+	}
+
+	#current {
+		width: 100%;
+		max-width: 459px;
+	}
+
+	#root #current .top {
+		padding: 42px 46px 0px;
+	}
+
+	#root #data {
+		padding: 42px 120px;
+	}
+
+	#root #highlights {
+		padding: 0;
+
+		.list {
+			display: grid;
+			grid-template-columns: auto auto;
+		}
+	}
+
+	#data #forecasts {
+		width: $fill;
+	}
+}

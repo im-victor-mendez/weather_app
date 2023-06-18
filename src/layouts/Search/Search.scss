@@ -17,11 +17,11 @@ $padding: 17.41px;
 		padding: $padding;
 
 		.icon {
-			$size: 13.18px;
+			height: 15px;
 
-			width: $size;
-			height: $size;
-			stroke: $white;
+			* {
+				fill: $white;
+			}
 		}
 	}
 

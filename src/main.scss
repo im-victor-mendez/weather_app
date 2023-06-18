@@ -1,3 +1,7 @@
+@import '@sass/mixins';
+
+@include medias();
+
 body {
 	margin: 0;
 }

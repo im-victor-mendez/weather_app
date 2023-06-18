@@ -2,8 +2,6 @@
 @import '@sass/fonts';
 @import '@sass/sizes';
 
-$min-height: 810px;
-
 $icon-height: 326px;
 $image-width: 150px;
 
@@ -15,10 +13,40 @@ $image-width: 150px;
 	color: $white;
 	font-family: $font-family;
 	width: $fill;
-	min-height: $min-height;
+	height: 100vh;
 
 	* {
 		margin: 0;
+	}
+
+	.top {
+		display: flex;
+		justify-content: space-between;
+		width: $fill;
+		height: 40px;
+		padding: 18px 12px 0px;
+
+		.search {
+			background-color: $gray-1;
+			color: $white;
+			box-shadow: 0px 4px 4px 0px #00000040;
+			font-weight: 500;
+			font-size: 16px;
+			border: 0;
+			width: 161px;
+			padding: 0;
+		}
+
+		.icon {
+			$size: 22px;
+
+			background-image: none;
+			background-color: $transparent-gray;
+			width: $size;
+			height: $size;
+			padding: 9px;
+			border-radius: 100px;
+		}
 	}
 
 	// Add opacity to background
@@ -42,36 +70,6 @@ $image-width: 150px;
 		flex-direction: column;
 		align-items: center;
 		gap: 48px;
-	}
-}
-
-#current > .top {
-	display: flex;
-	justify-content: space-between;
-	width: $fill;
-	height: 40px;
-	padding: 18px 12px 0px;
-
-	.search {
-		background-color: $gray-1;
-		color: $white;
-		box-shadow: 0px 4px 4px 0px #00000040;
-		font-weight: 500;
-		font-size: 16px;
-		border: 0;
-		width: 161px;
-		padding: 0;
-	}
-
-	.icon {
-		$size: 22px;
-
-		background-image: none;
-		background-color: $transparent-gray;
-		width: $size;
-		height: $size;
-		padding: 9px;
-		border-radius: 100px;
 	}
 }
 
