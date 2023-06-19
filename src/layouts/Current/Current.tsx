@@ -49,8 +49,8 @@ function Current() {
 
 	const imageSrc =
 		Object.keys(currentWeather).length > 0
-			? IconIndex[currentWeather.icon_num - 1].replace('@', '..')
-			: IconIndex[1].replace('@', '..')
+			? IconIndex[currentWeather.icon_num - 1].replace('@', './src')
+			: IconIndex[1].replace('@', './src')
 	const description = desSlug(currentWeather.icon || '')
 	const date = new Date().toUTCString()
 	const today = translateDate(date)

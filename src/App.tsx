@@ -7,7 +7,10 @@ import Highlights from './layouts/Highlights/Highlights'
 import { RootState, useAppDispatch } from './store/store'
 import { setCoords, setLocation } from './store/actions/locationActions'
 import { dailyWeather } from './api/forecast'
-import { setCurrentWeather, setForecast } from './store/actions/forecastActions'
+import {
+	setCurrentWeather,
+	setForecast,
+} from './store/actions/forecastActions.ts'
 import reverseGeocoding from './api/reverseGeocoding'
 
 function App() {
