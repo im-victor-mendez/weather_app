@@ -70,4 +70,4 @@ $ npm run dev
 ## Contact
 
 - LinkedIn [in/im-victor-mendez](https://www.linkedin.com/in/im-victor-mendez/)
-- GitHub [@your-username](https://github.com/im-victor-mendez/)
+- GitHub [im-victor-mendez](https://github.com/im-victor-mendez/)
