@@ -1,6 +1,6 @@
-@import '@/sass/colors';
-@import '@/sass/fonts';
-@import '@/sass/sizes';
+@import '../../sass/colors';
+@import '../../sass/fonts';
+@import '../../sass/sizes';
 
 $icon-height: 326px;
 $image-width: 150px;
@@ -51,7 +51,7 @@ $image-width: 150px;
 
 	// Add opacity to background
 	.icon {
-		background-image: url(@/assets/images/Cloud-background.png);
+		background-image: url(../../assets/images/Cloud-background.png);
 		background-size: auto $icon-height;
 		background-position: center;
 		background-repeat: no-repeat;
