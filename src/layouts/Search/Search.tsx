@@ -7,7 +7,7 @@ import { Place, findPlace } from '@/api/location'
 import { useAppDispatch } from '@/store/store'
 import { Coords } from '@/store/types'
 import { setCoords, setLocation } from '@/store/actions/locationActions'
-import { setCurrentWeather } from '@/store/actions/forecastActions.ts'
+import { setCurrentWeather } from '@/store/actions/forecastActions'
 
 interface Props {
 	enableLayout: React.Dispatch<SetStateAction<boolean>>
