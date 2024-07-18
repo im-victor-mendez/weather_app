@@ -1,13 +1,13 @@
 import './Search.scss'
-import { ReactComponent as SearchIcon } from '@/assets/svg/search-outline.svg'
-import { ReactComponent as CloseIcon } from '@/assets/svg/close-outline.svg'
-import { ReactComponent as ArrowIcon } from '@/assets/svg/arrow-ios-forward.svg'
+import { ReactComponent as SearchIcon } from '@assets/svg/search-outline.svg'
+import { ReactComponent as CloseIcon } from '@assets/svg/close-outline.svg'
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-ios-forward.svg'
 import { SetStateAction, useState } from 'react'
-import { Place, findPlace } from '@/api/location'
-import { useAppDispatch } from '@/store/store'
-import { Coords } from '@/store/types'
-import { setCoords, setLocation } from '@/store/actions/locationActions'
-import { setCurrentWeather } from '@/store/actions/ForecastActions'
+import { Place, findPlace } from '@api/location'
+import { useAppDispatch } from '@store/store'
+import { Coords } from '@store/types'
+import { setCoords, setLocation } from '@store/actions/locationActions'
+import { setCurrentWeather } from '@store/actions/ForecastActions'
 
 interface Props {
 	enableLayout: React.Dispatch<SetStateAction<boolean>>

@@ -1,7 +1,7 @@
 import { Action, ThunkDispatch } from '@reduxjs/toolkit'
 import { Coords, Forecast, SET_CURRENT_WEATHER, SET_FORECAST } from '../types'
 import { RootState } from '../store'
-import { currentWeather } from '@/api/forecast'
+import { currentWeather } from '@api/forecast'
 
 /**
  * Set forecast

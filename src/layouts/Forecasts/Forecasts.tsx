@@ -1,6 +1,6 @@
 import './Forecasts.scss'
-import Forecast from '@/components/Forecast/Forecast'
-import { RootState } from '@/store/store'
+import Forecast from '@components/Forecast/Forecast'
+import { RootState } from '@store/store'
 import { useSelector } from 'react-redux'
 
 function Forecasts() {

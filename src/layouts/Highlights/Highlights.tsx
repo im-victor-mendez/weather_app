@@ -1,6 +1,6 @@
 import './Highlights.scss'
-import Highlight, { Types } from '@/components/Highlight/Highlight'
-import { RootState } from '@/store/store'
+import Highlight, { Types } from '@components/Highlight/Highlight'
+import { RootState } from '@store/store'
 import { useSelector } from 'react-redux'
 
 function Highlights() {

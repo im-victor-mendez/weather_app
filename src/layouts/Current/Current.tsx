@@ -1,10 +1,10 @@
-import { translateDate } from '@/functions/date'
-import { setCoords } from '@/store/actions/locationActions'
-import { RootState, useAppDispatch } from '@/store/store'
-import { ReactComponent as LocationIcon } from '@/assets/svg/alternate-map-marker.svg'
-import { ReactComponent as CurrentLocationIcon } from '@/assets/svg/current-location.svg'
-import { desSlug } from '@/functions/string'
-import { Icon } from '@/typescript/enums'
+import { translateDate } from '@functions/date'
+import { setCoords } from '@store/actions/locationActions'
+import { RootState, useAppDispatch } from '@store/store'
+import { ReactComponent as LocationIcon } from '@assets/svg/alternate-map-marker.svg'
+import { ReactComponent as CurrentLocationIcon } from '@assets/svg/current-location.svg'
+import { desSlug } from '@functions/string'
+import { Icon } from '@typescript/enums'
 import { useState } from 'react'
 import Search from '../Search/Search'
 import './Current.scss'
@@ -49,8 +49,9 @@ function Current() {
 
 	const imageSrc =
 		Object.keys(currentWeather).length > 0
-			? IconIndex[currentWeather.icon_num - 1].replace('@', './src')
-			: IconIndex[1].replace('@', './src')
+			? IconIndex[currentWeather.icon_num - 1].replace('@', './src/')
+			: IconIndex[1].replace('@', './src/')
+
 	const description = desSlug(currentWeather.icon || '')
 	const date = new Date().toUTCString()
 	const today = translateDate(date)

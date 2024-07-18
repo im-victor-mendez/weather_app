@@ -1,6 +1,6 @@
-import { Icon } from '@/typescript/enums'
+import { Icon } from '@typescript/enums'
 import './Forecast.scss'
-import { translateDate } from '@/functions/date'
+import { translateDate } from '@functions/date'
 
 type ForecastType = {
 	day: string

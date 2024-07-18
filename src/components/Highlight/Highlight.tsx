@@ -1,5 +1,5 @@
 import './Highlight.scss'
-import { ReactComponent as LocationIcon } from '@/assets/svg/location-arrow.svg'
+import { ReactComponent as LocationIcon } from '@assets/svg/location-arrow.svg'
 
 export enum Types {
 	WIND,
