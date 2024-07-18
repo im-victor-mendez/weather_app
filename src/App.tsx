@@ -10,7 +10,7 @@ import { dailyWeather } from './api/forecast'
 import {
 	setCurrentWeather,
 	setForecast,
-} from './store/actions/forecastActions.ts'
+} from './store/actions/ForecastActions.ts'
 import reverseGeocoding from './api/reverseGeocoding'
 
 function App() {
